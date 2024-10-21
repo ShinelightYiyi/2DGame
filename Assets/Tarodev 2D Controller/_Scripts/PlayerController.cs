@@ -37,7 +37,7 @@ namespace TarodevController
             _col = GetComponent<CapsuleCollider2D>();
 
             canInput = true;
-            canDush = true;
+            canDush = false;
             EventCenter.Instance.AddEventListener<bool>("控制输入", (o) => ControlInput(o));
             EventCenter.Instance.AddEventListener<float>("弹飞玩家",(o)=>StartBounce(o));
 
@@ -173,14 +173,14 @@ namespace TarodevController
             // Hit a Ceiling
             if (ceilingHit)
             {
-                Debug.Log("撞上天花板");
+               // Debug.Log("撞上天花板");
                 _frameVelocity.y = Mathf.Min(0, _frameVelocity.y);
             }
 
 
             if (!_grounded && groundHit)  
             {
-                Debug.Log("着地");
+              //  Debug.Log("着地");
                 isFlying = false;
                 _grounded = true;
                 canDush = true;
@@ -191,7 +191,7 @@ namespace TarodevController
             }
             else if (_grounded && !groundHit)
             {
-                Debug.Log("离开地面");
+             //   Debug.Log("离开地面");
                 _grounded = false;
                 _frameLeftGrounded = _time;
                 GroundedChanged?.Invoke(false, 0);  
@@ -243,7 +243,7 @@ namespace TarodevController
             if (_frameInput.DushDown && canDush)
             {
                 StartCoroutine(RealDush());
-                Debug.Log("冲刺");
+              //  Debug.Log("冲刺");
             }
         }
 
@@ -255,7 +255,7 @@ namespace TarodevController
                 isDushing = true;
                 canInput = false;
                 DushEvent?.Invoke();
-                Debug.Log("冲刺开始");
+              //  Debug.Log("冲刺开始");
                 if (_frameInput.Move.x>0 && _frameInput.DushDown)
                 {
                     _frameVelocity = Vector2.right * _stats.DushPower;  
@@ -279,7 +279,7 @@ namespace TarodevController
 
                 yield return new WaitForSeconds(0.15f);
                 nextDushing = false;
-                Debug.Log("冲刺结束");
+              //  Debug.Log("冲刺结束");
             }
         }
 
@@ -360,7 +360,7 @@ namespace TarodevController
             if (isDushing || isFlying) 
             {
                 isFlying = true;
-                Debug.LogWarning("起飞"); 
+               // Debug.LogWarning("起飞"); 
                 _frameVelocity = ( new Vector2(-_frameVelocity.x  , 20f)) * direction; 
             }
 

@@ -161,7 +161,7 @@ namespace GameFrameWork
             if(isGround && _rb.velocity.y<=0)
             {
                 _frameVelocity.y = -1.5f;
-                Debug.LogWarning("碰到地面");
+           //     Debug.LogWarning("碰到地面");
             }
             else
             {
