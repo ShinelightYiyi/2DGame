@@ -23,10 +23,10 @@ namespace GameFrameWork
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
-        public void SaveData()
+        public void SaveData(Vector2 position)
         {
             truePlayerData data = new truePlayerData();
-            data.playerPosition = player.transform.position;
+            data.playerPosition = position;
             JsonSave.Instance.SaveData("player.sav", data);
         }
 
@@ -34,6 +34,11 @@ namespace GameFrameWork
         {
             truePlayerData data = new truePlayerData();
             data = JsonSave.Instance.LoadData<truePlayerData>("player.sav");
+            if (player == null)
+            {
+                Debug.LogWarning("Íæ¼Ò²»´æÔÚ");
+                return;
+            }
             player.transform.position = data.playerPosition;
         }
 

@@ -11,9 +11,11 @@ namespace GameFrameWork
     {
         bool canStart = true;
 
+        [SerializeField] Transform SavePosition;
 
+        [SerializeField] GameObject LevelEdge;
 
-        [SerializeField] GameObject LastLevel;
+        
 
         [SerializeField] GameObject LastCamera, TheCamera;
 
@@ -23,6 +25,7 @@ namespace GameFrameWork
             if (collision.tag == "Player" && canStart)
             {
                 EventCenter.Instance.EventTrigger(gameObject.name);
+                PlayerData.Instance.SaveData(SavePosition.position);
                 canStart = false;
                 StartLevel();
             }
@@ -32,6 +35,7 @@ namespace GameFrameWork
         private void StartLevel()
         {
             TheCamera.SetActive(true);
+            LevelEdge.SetActive(true);  
             LastCamera.SetActive(false);
         }
 

@@ -44,6 +44,17 @@ namespace TarodevController
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
         }
 
+        private void Start()
+        {
+            PlayerData.Instance.GetPlayer();
+            PlayerData.Instance.LoadData();
+        }
+
+        private void OnDestroy()
+        {
+            
+        }
+
         private void Update()
         {
             _time += Time.deltaTime;

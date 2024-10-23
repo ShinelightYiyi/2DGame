@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 
 namespace GameFrameWork
@@ -88,7 +89,15 @@ namespace GameFrameWork
             }
         }
 
+        private void OnDestroy()
+        {
+            EventCenter.Instance.Clear();
+            rampGo.transform.DOKill();
+        }
+
     }
+
+    
 
 
     public enum RampName

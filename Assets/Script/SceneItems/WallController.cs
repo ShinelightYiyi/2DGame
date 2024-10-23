@@ -20,14 +20,21 @@ namespace GameFrameWork
 
         private void StartTheLevel()
         {
-            switch (wallName)
+            if(gameObject != null)
             {
-                case WallName.Horizontal:
-                    EventCenter.Instance.AddEventListener<bool>("垂直移动", (o) => HorizontalMove(o));
-                    break;
-                case WallName.Vertecial:
-                    EventCenter.Instance.AddEventListener<int>("水平移动", (o) => VerticalMove(o));
-                    break;
+                switch (wallName)
+                {
+                    case WallName.Horizontal:
+                        EventCenter.Instance.AddEventListener<bool>("垂直移动", (o) => HorizontalMove(o));
+                        break;
+                    case WallName.Vertecial:
+                        EventCenter.Instance.AddEventListener<int>("水平移动", (o) => VerticalMove(o));
+                        break;
+                }
+            }
+            else
+            {
+                return;
             }
         }    
 
@@ -75,6 +82,11 @@ namespace GameFrameWork
             {
                 return;
             }
+        }
+
+        private void OnDestroy()
+        {
+            gameObject.transform.DOKill();
         }
 
     }
