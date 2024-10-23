@@ -37,12 +37,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Camera_size: 3
     - _Camera_size: 7.52
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _object: -0.02
-    - _offset: 3.3
     - _object: 13.19
     - _offset: -0.04
     m_Colors:
