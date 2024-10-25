@@ -10,7 +10,6 @@ namespace GameFrameWork
         [SerializeField] string levelName;
         [SerializeField] WallName wallName;
 
-        [SerializeField] float upTime;
 
         [Header("´¹Ö±")] [SerializeField] float Up,Down;
 
@@ -71,11 +70,11 @@ namespace GameFrameWork
             {
                 if (o)
                 {
-                    gameObject.transform.DOMove(gameObject.transform.position + new Vector3(0,Up), upTime);
+                    gameObject.transform.DOMove(gameObject.transform.position + new Vector3(0,Up), 0.2f);
                 }
                 else if (!o)
                 {
-                    gameObject.transform.DOMove(gameObject.transform.position + new Vector3(0,Down), upTime);
+                    gameObject.transform.DOMove(gameObject.transform.position + new Vector3(0,Down), 0.2f);
                     Debug.LogWarning("ÒÆ¶¯");
                 }
             }
