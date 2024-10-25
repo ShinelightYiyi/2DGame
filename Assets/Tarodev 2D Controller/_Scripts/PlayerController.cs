@@ -46,8 +46,8 @@ namespace TarodevController
 
         private void Start()
         {
-            PlayerData.Instance.GetPlayer();
-            PlayerData.Instance.LoadData();
+           // PlayerData.Instance.GetPlayer();
+           // PlayerData.Instance.LoadData();
         }
 
         private void OnDestroy()

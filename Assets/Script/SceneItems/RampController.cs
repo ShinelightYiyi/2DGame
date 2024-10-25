@@ -20,7 +20,7 @@ namespace GameFrameWork
         {
             if (collision.tag == "Box" && canDown)
             {
-                rampGo.transform.DOLocalMove(new Vector3(0, -0.5f, 3f), 0.1f);
+                rampGo.transform.DOLocalMove(new Vector3(0, -0.8f, 3f), 0.1f);
                 canDown = false;
                 boxDown = true;
 

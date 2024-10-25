@@ -17,7 +17,7 @@ namespace GameFrameWork
 
         IPlayerController player;
 
-       [SerializeField] float GravityForce = 1f;
+       [SerializeField] float GravityForce = 3f;
 
 
         private void Start()
@@ -47,7 +47,7 @@ namespace GameFrameWork
             switch(material)
             {
                 case BoxMaterial.Wood:
-                    massRate = 0.35f;
+                    massRate = 0.2f;
                     _rb.mass = gameObject.transform.localScale.x * massRate;
                     break;
                 case BoxMaterial.Iron:
@@ -133,7 +133,7 @@ namespace GameFrameWork
         {
             isDushing = true;
             withGravity = false;
-            EventCenter.Instance.EventTrigger<float>("µ¯·ÉÍæ¼Ò", 0.5f);
+            EventCenter.Instance.EventTrigger<float>("µ¯·ÉÍæ¼Ò", 0.25f);
             isPull = false;
             _rb.mass = 1f;
             _frameVelocity = new Vector2(dushPower * o, 0f);
@@ -165,7 +165,7 @@ namespace GameFrameWork
             }
             else
             {
-                _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -40f, 110 * Time.fixedDeltaTime*GravityForce);
+                _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -80f, 200 * Time.fixedDeltaTime*GravityForce);
             }
         }
 
